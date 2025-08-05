@@ -686,7 +686,7 @@ setMethod( "diffIP", signature("MeRIP.RADAR"), function(object, exclude = NULL, 
       coef <- model1$coefficients
       mu2 <- coef[1]
       beta <- coef[2]
-      est <- try(unlist(PoissionGamma(Y, X, beta, psi, mu2, gamma = gamma, steps = steps, down = down,psi_cutoff = maxPsi)))
+      est <- try(unlist(PoissionGamma(Y, X, beta, psi, mu2, gamma = gamma, steps = steps, down = down, psi_cutoff = maxPsi)))
       if(class(est) != "try-error"){
         all.est <- rbind(all.est, est)
         all.id <- c(all.id, kk)
@@ -710,7 +710,7 @@ setMethod( "diffIP", signature("MeRIP.RADAR"), function(object, exclude = NULL, 
       aa <- unlist(summary( lm( design.multiBeta, data = as.data.frame(cbind(Y, X.all)) ) )$coefficients[, 1])
       mu2 <- aa[1]
       beta <- aa[2:(ncol(X.all)+1 )]
-      est <- try(unlist(PoissionGamma_multiple_beta(Y, X.all, beta, psi, mu2, gamma = gamma, steps = steps, down = down,psi_cutoff = maxPsi)))
+      est <- try(unlist(PoissionGamma_multiple_beta(Y, X.all, beta, psi, mu2, gamma = gamma, steps = steps, down = down, psi_cutoff = maxPsi)))
       if(class(est) != "try-error"){
         all.est <- rbind(all.est, est)
         all.id <- c(all.id, kk)
@@ -747,7 +747,7 @@ setMethod( "diffIP", signature("MeRIP.RADAR"), function(object, exclude = NULL, 
 #' @param fdrBy The method to control for false discovery rate. The default is "qvalue", can also be "fdr".
 #' @param thread The number of thread to use for computing.
 #' @export
-setMethod( "diffIP_parallel", signature("MeRIP.RADAR"), function(object, exclude = NULL, maxPsi = 100, fdrBy = "fdr", thread = 8 ){
+setMethod( "diffIP_parallel", signature("MeRIP.RADAR"), function(object, exclude = NULL, maxPsi = 100, fdrBy = "fdr", thread = 8, steps = 10, gamma = 0.5, down = 0.1 ){
   
   if( nrow(object@variate) != length(object@samplenames)  ){
     stop(" Predictor variable lengthen needs to match the sample size! If you haven't set the predictor variable, please set it by variable(object) <- data.frmae(group = c(...)) ")
@@ -790,7 +790,7 @@ setMethod( "diffIP_parallel", signature("MeRIP.RADAR"), function(object, exclude
       coef <- model1$coefficients
       mu2 <- coef[1]
       beta <- coef[2]
-      est <- try(unlist(PoissionGamma(Y, X, beta, psi, mu2, gamma = 0.75, steps = 50, down = 0.1,psi_cutoff = maxPsi)))
+      est <- try(unlist(PoissionGamma(Y, X, beta, psi, mu2, gamma = gamma, steps = steps, down = down, psi_cutoff = maxPsi)))
       if(class(est) == "try-error"){
         error.id <- c(error.id, kk)
       }
@@ -823,7 +823,7 @@ setMethod( "diffIP_parallel", signature("MeRIP.RADAR"), function(object, exclude
       aa <- unlist(summary( lm( design.multiBeta, data = as.data.frame( cbind(Y, X.all) ) ) )$coefficients[, 1])
       mu2 <- aa[1]
       beta <- aa[2:(ncol(X.all)+1 )]
-      est <- try(unlist(PoissionGamma_multiple_beta(Y, X.all, beta, psi, mu2, gamma = 0.25, steps = 25, down = 0.1,psi_cutoff = maxPsi)))
+      est <- try(unlist(PoissionGamma_multiple_beta(Y, X.all, beta, psi, mu2, gamma = gamma, steps = steps, down = down, psi_cutoff = maxPsi)))
       if(class(est) == "try-error"){
         error.id <- c(error.id, kk)
       }
