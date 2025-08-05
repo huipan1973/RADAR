@@ -103,7 +103,7 @@ setGeneric("diffIP",function(object,  exclude = NULL, maxPsi = 100, fdrBy = "fdr
 })
 
 #' @export
-setGeneric("diffIP_parallel",function(object,  exclude = NULL, maxPsi = 100, fdrBy = "fdr", thread){
+setGeneric("diffIP_parallel",function(object,  exclude = NULL, maxPsi = 100, fdrBy = "fdr", thread = 8, steps = 10, gamma = 0.5, down = 0.1){
   standardGeneric("diffIP_parallel")
 })
 
