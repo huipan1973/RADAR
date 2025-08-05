@@ -4,8 +4,15 @@
 \alias{countIntronReads}
 \title{countIntronReads}
 \usage{
-countIntronReads(samplenames, gtf, fragmentLength = 150, bamFolder,
-  strandToKeep = "opposite", paired = FALSE, threads = 1)
+countIntronReads(
+  samplenames,
+  gtf,
+  fragmentLength = 150,
+  bamFolder,
+  strandToKeep = "opposite",
+  paired = FALSE,
+  threads = 1
+)
 }
 \arguments{
 \item{bamFolder}{Path to the folder where bam file locates}

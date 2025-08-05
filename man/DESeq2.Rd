@@ -4,8 +4,7 @@
 \alias{DESeq2}
 \title{DESeq2}
 \usage{
-DESeq2(countdata, pheno, covariates = NULL, Dispplot = FALSE,
-  normalizeLib = F)
+DESeq2(countdata, pheno, covariates = NULL, Dispplot = FALSE, normalizeLib = F)
 }
 \arguments{
 \item{countdata}{Matrix of read count.}

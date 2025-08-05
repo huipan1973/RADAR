@@ -4,9 +4,22 @@
 \alias{plotGeneCoverageSplit}
 \title{plotGeneCoverageSplit}
 \usage{
-plotGeneCoverageSplit(IP_BAMs, INPUT_BAMs, size.IP, size.INPUT, X,
-  geneName, geneModel, libraryType = "opposite", center = mean, GTF,
-  ZoomIn = NULL, adjustExprLevel = "none", plotSNP = NULL, Names)
+plotGeneCoverageSplit(
+  IP_BAMs,
+  INPUT_BAMs,
+  size.IP,
+  size.INPUT,
+  X,
+  geneName,
+  geneModel,
+  libraryType = "opposite",
+  center = mean,
+  GTF,
+  ZoomIn = NULL,
+  adjustExprLevel = "none",
+  plotSNP = NULL,
+  Names
+)
 }
 \arguments{
 \item{size.IP}{The size factor for IP libraries}
